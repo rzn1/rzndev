@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-bg-primary text-text-primary font-sans antialiased;
+    overflow-x: hidden;
+    background-color: #050505;
+  }
+}
+
+@layer components {
+  .section {
+    @apply py-32 md:py-huge relative overflow-hidden;
+  }
+
+  .huge-text {
+    @apply text-7xl md:text-[10vw] font-black uppercase tracking-tighter leading-[0.9] overflow-hidden text-white;
+    text-shadow: 0 0 20px rgba(0, 217, 255, 0.2);
+  }
+
+  .huge-text span {
+    @apply inline-block;
+  }
+
+  .lusion-card {
+    @apply bg-white/5 backdrop-blur-md rounded-2xl p-10 shadow-lusion transition-all duration-300 hover:shadow-lusion-hover hover:-translate-y-2 border border-white/10 text-white;
+  }
+
+  .btn-lusion {
+    @apply inline-flex items-center justify-center px-10 py-4 font-bold rounded-full transition-all duration-500 overflow-hidden relative z-10;
+  }
+
+  .btn-lusion::before {
+    content: '';
+    @apply absolute inset-0 bg-text-primary scale-x-0 origin-right transition-transform duration-500 ease-out -z-10;
+  }
+
+  .btn-lusion:hover::before {
+    @apply scale-x-100 origin-left;
+  }
+
+  .btn-lusion:hover {
+    @apply text-bg-primary;
+    color: #050505 !important;
+  }
+
+  .btn-lusion-primary {
+    @apply border-2 border-text-primary text-text-primary;
+  }
+
+  .btn-lusion-accent {
+    @apply border-2 border-accent-blue text-accent-blue hover:text-bg-primary;
+  }
+
+  .gradient-text-lusion {
+    @apply bg-gradient-lusion bg-clip-text text-transparent;
+  }
+}
+
+/* Hide Default Scrollbar */
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* Lusion-style Vignette Overlay */
+.lusion-vignette {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 102, 255, 0.05) 100%);
+  z-index: 50;
+}
