@@ -4,7 +4,7 @@
       <div class="flex flex-col md:flex-row justify-between items-center gap-12">
         <div class="flex flex-col items-center md:items-start">
           <a href="#home" class="text-2xl font-black tracking-tighter mb-4 text-white">RZN<span class="text-accent-blue">.</span>DEV</a>
-          <p class="text-text-secondary text-sm">© {{ currentYear }} Obsidian Interactive Design.</p>
+          <p class="text-text-secondary text-sm">© {{ currentYear }} rzndev Developer.</p>
         </div>
         
         <div class="flex gap-12 flex-wrap justify-center">
@@ -28,6 +28,3 @@ const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 </script>
-
-<style scoped>
-</style>

@@ -70,6 +70,7 @@ const menuOpen = ref(false)
 const navItems = [
   { name: 'Home', href: '#home' },
   { name: 'About', href: '#about' },
+  { name: 'Journey', href: '#experience' },
   { name: 'Work', href: '#work' },
   { name: 'Contact', href: '#contact' }
 ]

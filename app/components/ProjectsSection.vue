@@ -28,8 +28,9 @@
             
             <!-- Link Overlay -->
             <div class="absolute inset-0 bg-bg-primary/80 flex items-center justify-center gap-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-md">
-              <a :href="project.demo" target="_blank" data-magnetic class="px-8 py-3 bg-white text-bg-primary font-bold rounded-full hover:scale-105 transition-transform">Live</a>
-              <a :href="project.github" target="_blank" data-magnetic class="px-8 py-3 border border-white text-white font-bold rounded-full hover:bg-white hover:text-bg-primary transition-all">Code</a>
+              <a v-if="project.demo" :href="project.demo" target="_blank" data-magnetic class="px-8 py-3 bg-white text-bg-primary font-bold rounded-full hover:scale-105 transition-transform">Live</a>
+              <!-- Show Code button only if github link exists, else maybe show something else or nothing -->
+              <a v-if="project.github" :href="project.github" target="_blank" data-magnetic class="px-8 py-3 border border-white text-white font-bold rounded-full hover:bg-white hover:text-bg-primary transition-all">Code</a>
             </div>
           </div>
           
@@ -116,36 +117,36 @@ onMounted(() => {
 
 const projects = [
   {
-    title: 'E-Commerce Fusion',
-    description: 'High-performance commerce engine with a focus on minimalist UX and seamless transitions.',
-    tags: ['NUXT', 'GSAP', 'STRIPE'],
+    title: 'AudioV',
+    description: 'Professional website for a construction company. Focused on presenting services and portfolio.',
+    tags: ['Web Dev', 'Client Work'],
     image: '/projects/audiov.png',
     demo: 'https://audiomix-ecru.vercel.app/',
     github: 'https://github.com/rzn1/AudioV',
   },
   {
-    title: 'Kinetic 3D Engine',
-    description: 'Experimental WebGL interaction library for creative developers.',
-    tags: ['TRESJS', 'THREE.JS', 'WEBGL'],
+    title: 'FutureRP WEB',
+    description: 'Professional website for a construction company. Focused on presenting services and portfolio.',
+    tags: ['Web Dev', 'Client Work'],
     image: '/projects/futurerp-web.png',
-    demo: '#',
-    github: '#',
+    demo: 'https://futurerp-website.vercel.app/',
+    github: null,
   },
   {
-    title: 'Minimalist TaskOS',
-    description: 'A distraction-free productivity tool built with focus-driven design principles.',
-    tags: ['VUE 3', 'TAILWIND', 'FIREBASE'],
-    image: 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?auto=format&fit=crop&q=80&w=1000',
-    demo: '#',
-    github: 'https://github.com/rzn1/world-tag',
+    title: 'Anmaran',
+    description: 'Professional website for a construction company. Focused on presenting services and portfolio.',
+    tags: ['Web Dev', 'Client Work'],
+    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1000', // Construction
+    demo: 'https://www.anmaran.lt',
+    github: null,
   },
   {
-    title: 'AI Aesthetic Lab',
-    description: 'Generative AI interface exploring the intersection of art and machine learning.',
-    tags: ['OPENAI', 'PINIA', 'VITEST'],
-    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000',
-    demo: '#',
-    github: '#',
+    title: 'Furnitexpo',
+    description: 'Corporate website for a furniture production company, showcasing their catalogue and manufacturing capabilities.',
+    tags: ['Web Dev', 'Client Work'],
+    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=1000', // Furniture
+    demo: 'https://www.furnitexpo.lt',
+    github: null,
   },
 ]
 </script>

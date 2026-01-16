@@ -27,9 +27,9 @@
         </div>
         
         <div class="flex-1 w-full contact-action opacity-0">
-          <div class="lusion-card p-16 text-center border-accent-blue/10 bg-bg-secondary/20">
-            <h3 class="text-2xl font-bold mb-8 text-white">Ready to start?</h3>
-            <a data-magnetic href="mailto:your.email@example.com" class="btn-lusion btn-lusion-primary w-full text-lg">
+          <div class="lusion-card p-16 text-center border-accent-blue/10 bg-bg-secondary/20 flex flex-col gap-6">
+            <h3 class="text-2xl font-bold mb-4 text-white">Ready to start?</h3>
+            <a data-magnetic href="mailto:dulinskas3@gmail.com" class="btn-lusion btn-lusion-primary w-full text-lg">
               Say Hello
             </a>
           </div>
@@ -77,10 +77,9 @@ onMounted(() => {
 })
 
 const socials = [
-  { name: 'GitHub', url: '#' },
-  { name: 'LinkedIn', url: '#' },
-  { name: 'Twitter', url: '#' },
-  { name: 'Dribbble', url: '#' },
+  { name: 'GitHub', url: 'https://github.com/rzn1' },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/ugnius-dulinskas-036b63377' },
+  { name: 'Twitter', url: 'https://x.com/rzngit' },
 ]
 </script>
 

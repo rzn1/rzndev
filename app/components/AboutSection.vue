@@ -9,11 +9,11 @@
         <!-- Bio -->
         <div class="max-w-4xl about-bio">
           <p class="text-3xl md:text-5xl font-bold leading-tight mb-8 text-white">
-            I'm a developer who bridges <span class="gradient-text-lusion">design and code</span> to create digital
+            I'm a Software Systems Engineer who bridges <span class="gradient-text-lusion">robust architecture and immersive design</span> to create digital
             experiences.
           </p>
           <p class="text-xl text-text-secondary leading-relaxed max-w-2xl">
-            With a focus on performance and obsidian aesthetics, I build web applications
+            With a focus on performance, security, and scalable systems, I build web applications
             that are as functional as they are beautiful.
           </p>
         </div>

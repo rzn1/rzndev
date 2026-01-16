@@ -1,6 +1,6 @@
 <template>
   <span 
-    class="hacker-text inline-block font-mono cursor-default"
+    class="hacker-text inline-block font-mono"
     @mouseenter="startScramble"
   >
     {{ displayText }}

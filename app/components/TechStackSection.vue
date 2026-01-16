@@ -56,7 +56,12 @@ const techCategories = [
   {
     title: 'Frontend Core',
     icon: CodeBracketIcon,
-    items: ['Vue 3', 'Nuxt 3', 'TypeScript', 'React', 'HTML5', 'CSS3/SCSS']
+    items: ['Vue 3', 'Nuxt', 'TypeScript', 'React', 'React Native', 'HTML5/CSS3']
+  },
+  {
+    title: 'Backend & Data',
+    icon: ServerIcon,
+    items: ['C#', '.NET Core', 'Node.js', 'Python', 'EF Core', 'SQL']
   },
   {
     title: 'Styling & UI',
@@ -69,19 +74,14 @@ const techCategories = [
     items: ['Three.js', 'GSAP', 'WebGL', 'Canvas API', 'TresJS']
   },
   {
-    title: 'Backend & Data',
-    icon: ServerIcon,
-    items: ['Node.js', 'Express', 'Firebase', 'Supabase', 'MongoDB', 'PostgreSQL']
-  },
-  {
     title: 'Tools & DevOps',
     icon: CommandLineIcon,
-    items: ['Git', 'Docker', 'Vite', 'Webpack', 'GitHub Actions', 'Vercel']
+    items: ['Git', 'Docker', 'VS Studio', 'Vite', 'NPM', 'GitHub Actions']
   },
   {
     title: 'Design',
     icon: WrenchScrewdriverIcon,
-    items: ['Figma', 'Adobe XD', 'Photoshop', 'Blender', 'Prototyping']
+    items: ['Figma', 'Prototyping', 'Adobe XD', 'Photoshop']
   }
 ]
 

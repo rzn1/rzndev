@@ -123,32 +123,39 @@ onMounted(() => {
 
 const experiences = [
   {
-    role: 'Senior Frontend Engineer',
-    company: 'TechFlow Solutions',
-    period: '2023 - Present',
-    description: 'Leading the frontend architecture migration to Vue 3 Composition API. Improved core web vitals by 40% and established a comprehensive component design system used across 5 distinct products.',
-    stack: ['Vue 3', 'TypeScript', 'Vite', 'Pinia']
+    role: 'Freelance Full-Stack Developer',
+    company: 'Self-Employed',
+    period: '2020 - Present',
+    description: 'Delivering custom web and software solutions for diverse clients. Specializing in high-performance websites, game server infrastructure, and scalable backend architectures.',
+    stack: ['Vue 3', 'Nuxt', '.NET', 'Node.js']
   },
   {
-    role: 'Creative Developer',
-    company: 'Digital Prism Agency',
-    period: '2021 - 2023',
-    description: 'Developed award-winning immersive web experiences for high-profile clients. Specialized in WebGL interactions and complex GSAP animations to drive user engagement and brand storytelling.',
-    stack: ['Three.js', 'GSAP', 'Nuxt', 'WebGL']
+    role: 'Full-Stack Developer',
+    company: 'Zenith Roleplay LLC',
+    period: '02/2025 - Present',
+    description: 'Working remotely as a Full-Stack Developer, building and maintaining core game features and web integrations.',
+    stack: ['Full-Stack', 'Remote', 'Game Dev']
   },
   {
-    role: 'Full Stack Developer',
-    company: 'Nexus Startups',
-    period: '2019 - 2021',
-    description: 'Built scalable MVP solutions for early-stage startups. Handled full lifecycle development from database design to frontend implementation and cloud deployment.',
-    stack: ['Node.js', 'React', 'MongoDB', 'AWS']
+    role: 'Founder & Lead Developer',
+    company: 'FutureRP',
+    period: '2020 - 2024',
+    description: 'Founded and led a GTA V roleplay server community. Managed a team of 20+ staff and served 1000+ users. Architected the entire backend in C# (.NET Core) and frontend in VueJS, handling high-concurrency game logic and database interactions.',
+    stack: ['C#', '.NET Core', 'VueJS', 'Node.js', 'MySQL']
   },
   {
-    role: 'Junior Web Developer',
-    company: 'Creative Spark',
-    period: '2018 - 2019',
-    description: 'Collaborated with designers to translate Figma prototypes into pixel-perfect responsive websites. Maintained legacy codebases and implemented accessibility improvements.',
-    stack: ['HTML/SCSS', 'JavaScript', 'PHP', 'WordPress']
+    role: 'Full-Stack Developer',
+    company: 'UndefinedRP',
+    period: '05/2024 - 09/2024',
+    description: 'Remote Full-Stack position focusing on game server development and web infrastructure.',
+    stack: ['Full-Stack', 'Remote']
+  },
+  {
+    role: 'Oracle Programming Intern',
+    company: 'Ingenious IT',
+    period: '03/2024 - 04/2024',
+    description: 'Actively worked with the Java language, creating and improving business management systems. Gained experience in object-oriented programming principles and their practical application.',
+    stack: ['Java', 'OOP', 'Business Systems']
   }
 ]
 </script>
