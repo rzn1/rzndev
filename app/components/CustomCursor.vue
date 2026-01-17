@@ -17,25 +17,10 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
 
 const ringRef = ref<HTMLElement | null>(null)
-const mouse = { x: 0, y: 0 }
-const pos = { x: 0, y: 0 }
-const speed = 0.2
-
-const updatePosition = () => {
-  pos.x += (mouse.x - pos.x) * speed
-  pos.y += (mouse.y - pos.y) * speed
-  
-  if (ringRef.value) {
-    gsap.set(ringRef.value, {
-      x: pos.x,
-      y: pos.y
-    })
-  }
-}
 
 const onMouseMove = (e: MouseEvent) => {
-  mouse.x = e.clientX
-  mouse.y = e.clientY
+  let x = e.clientX
+  let y = e.clientY
 
   // Check for magnetic elements
   const target = e.target as HTMLElement
@@ -47,8 +32,8 @@ const onMouseMove = (e: MouseEvent) => {
     const centerY = rect.top + rect.height / 2
     
     // Smoothly pull toward center
-    mouse.x = centerX + (e.clientX - centerX) * 0.4
-    mouse.y = centerY + (e.clientY - centerY) * 0.4
+    x = centerX + (e.clientX - centerX) * 0.4
+    y = centerY + (e.clientY - centerY) * 0.4
     
     gsap.to(ringRef.value, {
       width: rect.width + 20,
@@ -66,16 +51,21 @@ const onMouseMove = (e: MouseEvent) => {
       duration: 0.3
     })
   }
+
+  if (ringRef.value) {
+    gsap.set(ringRef.value, {
+      x,
+      y
+    })
+  }
 }
 
 onMounted(() => {
   window.addEventListener('mousemove', onMouseMove)
-  gsap.ticker.add(updatePosition)
 })
 
 onUnmounted(() => {
   window.removeEventListener('mousemove', onMouseMove)
-  gsap.ticker.remove(updatePosition)
 })
 </script>
 
