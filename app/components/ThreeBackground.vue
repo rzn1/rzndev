@@ -1,15 +1,15 @@
 <template>
   <div class="fixed inset-0 -z-10 bg-bg-primary overflow-hidden">
     <ClientOnly>
-      <TresCanvas window-size :clear-color="'#050505'" :power-preference="'high-performance'">
+      <TresCanvas window-size :clear-color="'#020202'" :power-preference="'high-performance'">
         <TresPerspectiveCamera :position="[0, 0, 10]" :look-at="[0, 0, 0]" />
         <TresAmbientLight :intensity="0.5" />
-        
+
         <!-- Interactive Neural Web Logic -->
         <NeuralWeb />
       </TresCanvas>
     </ClientOnly>
-    <div class="lusion-vignette"></div>
+    <div class="premium-vignette"></div>
     <div class="film-grain"></div>
   </div>
 </template>

@@ -14,19 +14,20 @@ const createSpark = (x: number, y: number) => {
   if (!sparkContainer.value) return
 
   const particleCount = 8
-  const colors = ['#00d9ff', '#ffffff']
+  const colors = ['#6366f1', '#ffffff']
 
   for (let i = 0; i < particleCount; i++) {
     const el = document.createElement('div')
     el.style.position = 'absolute'
-    el.style.width = '3px'
-    el.style.height = '3px'
+    el.style.width = '2px'
+    el.style.height = '2px'
     el.style.borderRadius = '50%'
-    el.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)]
+    const color = colors[Math.floor(Math.random() * colors.length)] || '#ffffff'
+    el.style.backgroundColor = color
     el.style.left = `${x}px`
     el.style.top = `${y}px`
     el.style.pointerEvents = 'none'
-    
+
     sparkContainer.value.appendChild(el)
 
     const angle = Math.random() * Math.PI * 2
@@ -59,5 +60,4 @@ onUnmounted(() => {
 })
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
