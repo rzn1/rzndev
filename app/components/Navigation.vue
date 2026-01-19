@@ -51,11 +51,11 @@ const isScrolled = ref(false)
 const menuOpen = ref(false)
 
 const navItems = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Contact', href: '#contact' }
+  { name: 'System', href: '#home' },
+  { name: 'Profile', href: '#about' },
+  { name: 'Journey', href: '#experience' },
+  { name: 'Archive', href: '#projects' },
+  { name: 'Link', href: '#contact' }
 ]
 
 const handleScroll = () => {
