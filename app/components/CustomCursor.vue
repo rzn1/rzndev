@@ -1,13 +1,11 @@
 <template>
   <div class="fixed inset-0 pointer-events-none z-[9999] overflow-hidden">
     <!-- Cursor Ring -->
-    <div 
-      ref="ringRef" 
-      class="fixed w-8 h-8 rounded-full border border-accent-cyan/40 flex items-center justify-center transition-transform duration-0 ease-out"
-      style="transform: translate(-50%, -50%)"
-    >
+    <div ref="ringRef"
+      class="fixed w-6 h-6 rounded-full border border-accent-primary/50 flex items-center justify-center transition-transform duration-0 ease-out z-[9999]"
+      style="transform: translate(-50%, -50%)">
       <!-- Center Dot -->
-      <div class="w-1 h-1 bg-accent-cyan rounded-full shadow-[0_0_10px_rgba(0,217,255,0.8)]"></div>
+      <div class="w-1 h-1 bg-white rounded-full shadow-glow-indigo"></div>
     </div>
   </div>
 </template>
@@ -22,33 +20,40 @@ const onMouseMove = (e: MouseEvent) => {
   let x = e.clientX
   let y = e.clientY
 
-  // Check for magnetic elements
+  // Check for magnetic elements or interactive elements
   const target = e.target as HTMLElement
-  const magneticElement = target.closest('[data-magnetic]') as HTMLElement
-  
-  if (magneticElement && ringRef.value) {
-    const rect = magneticElement.getBoundingClientRect()
+  const interactiveElement = target.closest('[data-magnetic], a, button') as HTMLElement
+
+  if (interactiveElement && ringRef.value) {
+    const isMagnetic = interactiveElement.hasAttribute('data-magnetic')
+    const rect = interactiveElement.getBoundingClientRect()
     const centerX = rect.left + rect.width / 2
     const centerY = rect.top + rect.height / 2
-    
-    // Smoothly pull toward center
-    x = centerX + (e.clientX - centerX) * 0.4
-    y = centerY + (e.clientY - centerY) * 0.4
-    
+
+    // Pull towards center if magnetic
+    if (isMagnetic) {
+      x = centerX + (e.clientX - centerX) * 0.3
+      y = centerY + (e.clientY - centerY) * 0.3
+    }
+
     gsap.to(ringRef.value, {
-      width: rect.width + 20,
-      height: rect.height + 20,
-      borderRadius: '8px',
-      borderColor: 'rgba(0, 217, 255, 0.8)',
-      duration: 0.3
+      width: isMagnetic ? rect.width + 10 : 60,
+      height: isMagnetic ? rect.height + 10 : 60,
+      borderRadius: isMagnetic ? '12px' : '50%',
+      borderColor: 'rgba(99, 102, 241, 0.8)',
+      backgroundColor: 'rgba(99, 102, 241, 0.05)',
+      duration: 0.4,
+      ease: 'power3.out'
     })
   } else if (ringRef.value) {
     gsap.to(ringRef.value, {
-      width: 32,
-      height: 32,
+      width: 24,
+      height: 24,
       borderRadius: '50%',
-      borderColor: 'rgba(0, 217, 255, 0.4)',
-      duration: 0.3
+      borderColor: 'rgba(99, 102, 241, 0.5)',
+      backgroundColor: 'transparent',
+      duration: 0.4,
+      ease: 'power3.out'
     })
   }
 
@@ -75,7 +80,8 @@ onUnmounted(() => {
   cursor: none !important;
 }
 
-:global(a), :global(button) {
+:global(a),
+:global(button) {
   cursor: none !important;
 }
 </style>

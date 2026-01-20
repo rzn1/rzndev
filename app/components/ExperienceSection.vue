@@ -1,52 +1,55 @@
 <template>
-  <section id="experience" class="section relative overflow-hidden">
+  <section id="experience" class="section bg-bg-primary relative overflow-hidden">
     <div class="container mx-auto px-6 relative z-10">
       <div class="huge-text mb-24 opacity-100 flex justify-end md:justify-start text-white">
-        <h1><HackerText text="JOURNEY" /></h1>
+        <h1>
+          <HackerText text="JOURNEY" />
+        </h1>
       </div>
 
-      <div class="relative max-w-4xl mx-auto">
-        <!-- The Circuit Line -->
-        <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-[2px] bg-white/10 md:-translate-x-1/2 origin-top">
-          <div class="timeline-progress h-full w-full bg-accent-blue origin-top scale-y-0"></div>
+      <div class="relative max-w-5xl mx-auto">
+        <!-- The Elegant Timeline Line -->
+        <div class="absolute left-0 md:left-1/2 top-0 bottom-0 w-[1px] bg-white/5 md:-translate-x-1/2 origin-top">
+          <div
+            class="timeline-progress h-full w-full bg-gradient-to-b from-accent-primary to-accent-tertiary origin-top scale-y-0">
+          </div>
         </div>
 
         <!-- Experience Items -->
-        <div class="flex flex-col gap-24 relative">
-          <div 
-            v-for="(job, index) in experiences" 
-            :key="index"
-            class="experience-item relative md:w-1/2 flex flex-col gap-4"
-            :class="[
+        <div class="flex flex-col gap-20 relative">
+          <div v-for="(job, index) in experiences" :key="index"
+            class="experience-item relative md:w-1/2 flex flex-col gap-4" :class="[
               index % 2 === 0 ? 'md:self-start md:pr-16 md:text-right md:items-end' : 'md:self-end md:pl-16 md:text-left md:items-start',
-              'self-end pl-12 md:pl-0' /* Mobile: always right of line */
-            ]"
-          >
+              'self-end pl-12 md:pl-0'
+            ]">
             <!-- Timeline Node (Dot) -->
-            <div 
-              class="absolute top-0 w-4 h-4 rounded-full border-2 border-accent-blue bg-bg-primary z-10 timeline-node transition-colors duration-500"
+            <div
+              class="absolute top-0 w-3 h-3 rounded-full border border-white/20 bg-bg-primary z-10 timeline-node transition-all duration-500"
               :class="[
-                index % 2 === 0 ? 'md:-right-[9px]' : 'md:-left-[9px]',
-                '-left-[25px] md:auto' /* Mobile positioning */
-              ]"
-            ></div>
+                index % 2 === 0 ? 'md:-right-[6px]' : 'md:-left-[6px]',
+                '-left-[25px] md:auto'
+              ]"></div>
 
-            <!-- Date -->
-            <span class="text-accent-cyan font-mono text-sm tracking-widest uppercase mb-1 block">{{ job.period }}</span>
-            
+            <!-- Date & Category -->
+            <div class="flex flex-col mb-2">
+              <span class="text-accent-primary font-black text-[10px] tracking-[0.3em] uppercase">{{ job.period
+              }}</span>
+              <span class="text-white/20 text-[9px] font-bold uppercase tracking-widest mt-1">{{ job.location ||
+                'Remote' }}</span>
+            </div>
+
             <!-- Content Card -->
-            <div class="lusion-card p-8 w-full hover:border-accent-blue/30 group">
-              <h3 class="text-2xl font-bold text-white mb-2 group-hover:text-accent-blue transition-colors">{{ job.role }}</h3>
-              <h4 class="text-lg text-text-secondary font-medium mb-4">{{ job.company }}</h4>
-              <p class="text-text-secondary/80 leading-relaxed mb-6 text-sm">{{ job.description }}</p>
-              
+            <div class="premium-card p-8 md:p-10 w-full hover:border-accent-primary/50 group">
+              <h3
+                class="text-2xl font-black text-white mb-1 group-hover:text-accent-primary transition-colors tracking-tight uppercase">
+                {{ job.role }}</h3>
+              <h4 class="text-sm text-white/50 font-bold mb-6 tracking-widest uppercase">{{ job.company }}</h4>
+              <p class="text-text-secondary leading-relaxed mb-8 text-base font-normal">{{ job.description }}</p>
+
               <!-- Tech Stack Tags -->
               <div class="flex flex-wrap gap-2" :class="index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'">
-                <span 
-                  v-for="tech in job.stack" 
-                  :key="tech" 
-                  class="px-3 py-1 rounded-full border border-white/10 text-[10px] font-bold uppercase tracking-wider text-white/60 bg-white/5"
-                >
+                <span v-for="tech in job.stack" :key="tech"
+                  class="px-3 py-1 rounded-lg border border-white/5 text-[9px] font-bold uppercase tracking-widest text-white/40 bg-white/5 group-hover:border-accent-primary/20 group-hover:text-white/80 transition-all duration-500">
                   {{ tech }}
                 </span>
               </div>
@@ -105,7 +108,7 @@ onMounted(() => {
       duration: 0.8,
       ease: 'power3.out'
     })
-    
+
     // Light up the node when item is active
     const node = item.querySelector('.timeline-node')
     gsap.to(node, {
@@ -115,8 +118,8 @@ onMounted(() => {
         end: 'bottom 60%',
         toggleActions: 'play reverse play reverse'
       },
-      backgroundColor: '#00d9ff', // accent-blue
-      boxShadow: '0 0 15px #00d9ff'
+      backgroundColor: '#6366f1', // accent-primary
+      boxShadow: '0 0 20px #6366f1'
     })
   })
 })
@@ -163,7 +166,9 @@ const experiences = [
 <style scoped>
 /* Mobile adjustments for timeline positioning */
 @media (max-width: 768px) {
-  .timeline-progress, .circuit-line {
+
+  .timeline-progress,
+  .circuit-line {
     left: 0;
   }
 }

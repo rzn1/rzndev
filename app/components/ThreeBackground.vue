@@ -1,21 +1,37 @@
 <template>
   <div class="fixed inset-0 -z-10 bg-bg-primary overflow-hidden">
     <ClientOnly>
-      <TresCanvas window-size :clear-color="'#050505'" :power-preference="'high-performance'">
+      <TresCanvas window-size :clear-color="clearColor" :power-preference="'high-performance'">
         <TresPerspectiveCamera :position="[0, 0, 10]" :look-at="[0, 0, 0]" />
         <TresAmbientLight :intensity="0.5" />
-        
+
         <!-- Interactive Neural Web Logic -->
-        <NeuralWeb />
+        <NeuralWeb :scroll-progress="scrollProgress" :accent-color="accentColor" />
       </TresCanvas>
     </ClientOnly>
-    <div class="lusion-vignette"></div>
+    <div class="premium-vignette"></div>
+    <div class="glow-mesh"></div>
     <div class="film-grain"></div>
   </div>
 </template>
 
 <script setup lang="ts">
 import NeuralWeb from './NeuralWeb.vue'
+
+defineProps({
+  scrollProgress: {
+    type: Number,
+    default: 0
+  },
+  accentColor: {
+    type: String,
+    default: '#6366f1'
+  },
+  clearColor: {
+    type: String,
+    default: '#020202'
+  }
+})
 </script>
 
 <style scoped>

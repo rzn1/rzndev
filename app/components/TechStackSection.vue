@@ -1,44 +1,41 @@
 <template>
-  <section id="tech-stack" class="section relative overflow-hidden">
-    <!-- Background Grid Effect -->
-    <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] opacity-20 pointer-events-none"></div>
-    
+  <section id="tech-stack" class="section bg-bg-primary relative overflow-hidden">
+    <!-- Sophisticated background pattern -->
+    <div
+      class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(99,102,241,0.03)_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none">
+    </div>
+
     <div class="container mx-auto px-6 relative z-10">
       <div class="huge-text mb-24 opacity-100 flex justify-start text-white">
-        <h1><HackerText text="ARSENAL" /></h1>
+        <h1>
+          <HackerText text="ARSENAL" />
+        </h1>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Category Card -->
-        <div 
-          v-for="(category, index) in techCategories" 
-          :key="index"
-          class="tech-category group"
-        >
-          <div class="lusion-card h-full p-8 relative overflow-hidden bg-bg-primary/50 backdrop-blur-sm border border-white/5 hover:border-accent-blue/30 transition-all duration-500">
+        <div v-for="(category, index) in techCategories" :key="index" class="tech-category group">
+          <div class="premium-card h-full p-8 md:p-10">
             <!-- Header -->
-            <div class="flex items-center gap-4 mb-8">
-              <div class="w-12 h-12 rounded-lg bg-accent-blue/10 flex items-center justify-center text-accent-blue group-hover:scale-110 group-hover:bg-accent-blue/20 transition-all duration-500">
+            <div class="flex items-center gap-5 mb-10">
+              <div
+                class="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:bg-accent-primary group-hover:scale-110 transition-all duration-500 shadow-glow-indigo">
                 <component :is="category.icon" class="w-6 h-6" />
               </div>
-              <h3 class="text-2xl font-bold text-white tracking-wide group-hover:text-accent-blue transition-colors">{{ category.title }}</h3>
+              <h3
+                class="text-xl font-black text-white tracking-widest uppercase group-hover:text-accent-primary transition-colors">
+                {{ category.title }}</h3>
             </div>
 
             <!-- Tech List -->
-            <div class="flex flex-wrap gap-3">
-              <div 
-                v-for="(tech, tIndex) in category.items" 
-                :key="tIndex"
-                class="tech-item relative"
-              >
-                <div class="px-4 py-2 rounded bg-white/5 border border-white/10 text-sm font-medium text-text-secondary group-hover/item:text-white group-hover/item:border-accent-blue/50 group-hover/item:bg-accent-blue/10 transition-all duration-300 hover:scale-105">
+            <div class="flex flex-wrap gap-2">
+              <div v-for="(tech, tIndex) in category.items" :key="tIndex" class="tech-item">
+                <div
+                  class="px-3 py-1.5 rounded-lg bg-white/[0.03] border border-white/5 text-[11px] font-bold uppercase tracking-widest text-text-secondary hover:text-white hover:border-white/20 transition-all duration-300">
                   {{ tech }}
                 </div>
               </div>
             </div>
-
-            <!-- Decorative corner -->
-            <div class="absolute top-0 right-0 w-16 h-16 rounded-bl-md bg-accent-blue/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
         </div>
       </div>

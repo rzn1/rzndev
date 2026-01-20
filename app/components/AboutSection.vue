@@ -1,31 +1,65 @@
 <template>
-  <section id="about" class="section bg-bg-primary/50 relative overflow-hidden">
-    <div class="container mx-auto px-6 relative z-10">
-      <div class="huge-text mb-24 opacity-100 text-white">
-        <h1><HackerText text="ABOUT" /></h1>
-      </div>
+  <section id="about" class="min-h-screen bg-bg-primary relative overflow-hidden flex items-center py-32 md:py-0">
+    <!-- Massive Background Typography -->
+    <div class="absolute top-1/2 left-0 -translate-y-1/2 w-full pointer-events-none select-none overflow-hidden">
+      <div class="text-[25vw] font-black text-white/[0.02] whitespace-nowrap about-bg-scroll uppercase">DISCOVERY •
+        EVOLUTION • ARCHITECTURE •</div>
+    </div>
 
-      <div class="flex flex-col gap-24">
-        <!-- Bio -->
-        <div class="max-w-4xl about-bio">
-          <p class="text-3xl md:text-5xl font-bold leading-tight mb-8 text-white">
-            I'm a Software Systems Engineer who bridges <span class="gradient-text-lusion">robust architecture and immersive design</span> to create digital
-            experiences.
-          </p>
-          <p class="text-xl text-text-secondary leading-relaxed max-w-2xl">
-            With a focus on performance, security, and scalable systems, I build web applications
-            that are as functional as they are beautiful.
-          </p>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <!-- Left Column: Manifesto -->
+        <div class="lg:col-span-7 about-text">
+          <div class="flex items-center gap-4 mb-12">
+            <div class="w-12 h-[1px] bg-accent-primary"></div>
+            <span class="text-[10px] font-black uppercase tracking-[0.5em] text-accent-primary">Profile.Identity</span>
+          </div>
+
+          <h2
+            class="text-6xl md:text-[7vw] font-black text-white leading-[0.9] tracking-tighter uppercase mb-12 italic">
+            Engineering <br />
+            <span class="text-white/20">The Digital</span> <br />
+            <span class="gradient-text-premium uppercase">Frontier.</span>
+          </h2>
+
+          <div class="max-w-xl space-y-8">
+            <p class="text-xl md:text-2xl text-text-secondary leading-relaxed font-normal">
+              I am a Software Systems Engineer specializing in the convergence of <span
+                class="text-white font-bold italic underline decoration-accent-primary underline-offset-4">robust
+                architecture</span> and <span class="text-white font-bold">immersive interaction</span>.
+            </p>
+            <p class="text-lg text-text-secondary/60 leading-relaxed border-l border-white/10 pl-8">
+              My mission is to transcend traditional web boundaries, building scalable systems that don't just
+              function—they evoke a sense of presence.
+            </p>
+          </div>
         </div>
 
-        <!-- Skills Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-12">
-          <div v-for="(skill, index) in skills" :key="index" class="lusion-card skill-card group">
-            <div class="w-14 h-14 rounded-xl bg-accent-blue/10 flex items-center justify-center text-accent-blue mb-8 group-hover:scale-110 group-hover:bg-accent-blue/20 transition-all duration-500">
-              <component :is="skill.icon" class="w-7 h-7" />
-            </div>
-            <h3 class="text-xl font-bold mb-4 tracking-tight text-white group-hover:text-accent-blue transition-colors">{{ skill.name }}</h3>
-            <p class="text-text-secondary leading-relaxed">{{ skill.description }}</p>
+        <!-- Right Column: Bento Stats/Tech -->
+        <div class="lg:col-span-5 grid grid-cols-2 gap-4 about-bento">
+          <div
+            class="premium-card p-8 flex flex-col justify-between h-48 group hover:border-accent-primary/40 transition-colors">
+            <span
+              class="text-[10px] font-black uppercase tracking-widest text-white/20 group-hover:text-accent-primary transition-colors">Stack.Core</span>
+            <div class="text-3xl font-black text-white">VUE/NUXT</div>
+          </div>
+          <div
+            class="premium-card p-8 flex flex-col justify-between h-48 group hover:border-accent-primary/40 transition-colors mt-8">
+            <span
+              class="text-[10px] font-black uppercase tracking-widest text-white/20 group-hover:text-accent-primary transition-colors">Stack.Back</span>
+            <div class="text-3xl font-black text-white">.NET/NODE</div>
+          </div>
+          <div
+            class="premium-card p-8 flex flex-col justify-between h-48 group hover:border-accent-primary/40 transition-colors">
+            <span
+              class="text-[10px] font-black uppercase tracking-widest text-white/20 group-hover:text-accent-primary transition-colors">Stack.3D</span>
+            <div class="text-3xl font-black text-white">THREE.JS</div>
+          </div>
+          <div
+            class="premium-card p-8 flex flex-col justify-between h-48 group hover:border-accent-primary/40 transition-colors mt-8">
+            <span
+              class="text-[10px] font-black uppercase tracking-widest text-white/20 group-hover:text-accent-primary transition-colors">Status.Active</span>
+            <div class="text-3xl font-black text-white italic">FREELANCE</div>
           </div>
         </div>
       </div>
@@ -36,84 +70,51 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
 import gsap from 'gsap'
-import { 
-  BoltIcon, 
-  PaintBrushIcon, 
-  CommandLineIcon, 
-  CubeTransparentIcon, 
-  RocketLaunchIcon, 
-  DevicePhoneMobileIcon 
-} from '@heroicons/vue/24/outline'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 onMounted(() => {
-  const tl = gsap.timeline({
+  // Bio Entrance
+  gsap.from('.about-text > *', {
     scrollTrigger: {
       trigger: '#about',
-      start: 'top 80%',
-      toggleActions: 'play none none reverse'
-    }
+      start: 'top 70%',
+    },
+    opacity: 0,
+    x: -50,
+    duration: 1.2,
+    stagger: 0.15,
+    ease: 'power4.out'
   })
 
-  // 1. Reveal title
-  tl.from('#about .huge-text', {
+  // Bento Entrance
+  gsap.from('.about-bento > div', {
+    scrollTrigger: {
+      trigger: '#about',
+      start: 'top 70%',
+    },
+    opacity: 0,
     y: 50,
-    opacity: 0,
-    duration: 1,
+    duration: 1.2,
+    stagger: 0.1,
     ease: 'power3.out'
   })
-  
-  // 2. Reveal Bio text
-  .from('.about-bio > *', {
-    y: 30,
-    opacity: 0,
-    duration: 0.8,
-    stagger: 0.2,
-    ease: 'power3.out'
-  }, '-=0.6')
 
-  // 3. Reveal Skill Cards one by one
-  .from('.skill-card', {
-    opacity: 0,
-    y: 40,
-    duration: 0.8,
-    stagger: 0.15, // Sequential feel
-    ease: 'power2.out',
-    clearProps: 'all'
-  }, '-=0.4')
+  // Background text scrolling
+  gsap.to('.about-bg-scroll', {
+    scrollTrigger: {
+      trigger: '#about',
+      start: 'top bottom',
+      end: 'bottom top',
+      scrub: 2,
+    },
+    xPercent: -20,
+    ease: 'none'
+  })
 })
-
-const skills = [
-  {
-    icon: BoltIcon,
-    name: 'Frontend',
-    description: 'Specializing in Vue.js, Nuxt, and performance-driven UI.',
-  },
-  {
-    icon: PaintBrushIcon,
-    name: 'Creative',
-    description: 'Blending aesthetics with interactive WebGL experiences.',
-  },
-  {
-    icon: CommandLineIcon,
-    name: 'Backend',
-    description: 'Robust Node.js solutions and seamless API integrations.',
-  },
-  {
-    icon: CubeTransparentIcon,
-    name: '3D Web',
-    description: 'Building immersive worlds with Three.js and TresJS.',
-  },
-  {
-    icon: RocketLaunchIcon,
-    name: 'Optimization',
-    description: 'Ensuring lightning-fast load times and smooth motion.',
-  },
-  {
-    icon: DevicePhoneMobileIcon,
-    name: 'Responsive',
-    description: 'Flawless experiences across all modern devices.',
-  },
-]
 </script>
 
-<style scoped></style>
+<style scoped>
+.about-bg-scroll {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.05);
+}
+</style>

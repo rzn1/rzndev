@@ -3,52 +3,49 @@
     <!-- Neural Web Lines -->
     <TresLineSegments ref="linesRef">
       <TresBufferGeometry ref="linesGeometryRef" />
-      <TresLineBasicMaterial 
-        :color="lineColor" 
-        :transparent="true" 
-        :opacity="0.25" 
-        :blending="THREE_CONST.AdditiveBlending"
-        :depthWrite="false"
-      />
+      <TresLineBasicMaterial :color="lineColor" :transparent="true" :opacity="0.25"
+        :blending="THREE_CONST.AdditiveBlending" :depthWrite="false" />
     </TresLineSegments>
 
     <!-- Neural Nodes (Glow points) -->
     <TresPoints ref="nodesRef">
       <TresBufferGeometry ref="nodesGeometryRef" />
-      <TresPointsMaterial
-        :size="0.06"
-        :color="lineColor"
-        :transparent="true"
-        :opacity="0.6"
-        :blending="THREE_CONST.AdditiveBlending"
-        :depthWrite="false"
-      />
+      <TresPointsMaterial :size="0.06" :color="lineColor" :transparent="true" :opacity="0.6"
+        :blending="THREE_CONST.AdditiveBlending" :depthWrite="false" />
     </TresPoints>
 
     <!-- Volumetric Stardust -->
     <TresPoints ref="particlesRef">
       <TresBufferGeometry ref="pointsGeometryRef" />
-      <TresPointsMaterial
-        :size="0.03"
-        color="#ffffff"
-        :transparent="true"
-        :opacity="0.2"
-        :blending="THREE_CONST.AdditiveBlending"
-        :depthWrite="false"
-      />
+      <TresPointsMaterial :size="0.03" color="#ffffff" :transparent="true" :opacity="0.2"
+        :blending="THREE_CONST.AdditiveBlending" :depthWrite="false" />
     </TresPoints>
   </TresGroup>
 </template>
 
 <script setup lang="ts">
-import { ref, shallowRef, onMounted, onUnmounted } from 'vue'
+import { ref, shallowRef, onMounted, onUnmounted, watch } from 'vue'
 import * as THREE from 'three'
 
-// useRenderLoop and useTresContext are auto-imported by @tresjs/nuxt
+const props = defineProps({
+  scrollProgress: {
+    type: Number,
+    default: 0
+  },
+  accentColor: {
+    type: String,
+    default: '#6366f1'
+  }
+})
+
 const { onLoop } = useRenderLoop()
 
 const THREE_CONST = THREE
-const lineColor = '#00d9ff'
+const lineColor = ref(props.accentColor)
+
+watch(() => props.accentColor, (newColor) => {
+  lineColor.value = newColor
+})
 
 const linesRef = shallowRef()
 const linesGeometryRef = shallowRef()
@@ -81,7 +78,7 @@ const nodes = Array.from({ length: NODE_COUNT }, (_, i) => ({
 
 onMounted(() => {
   window.addEventListener('mousemove', handleMouseMove)
-  
+
   // Initialize Stardust Particles
   if (pointsGeometryRef.value) {
     const particleCount = 400
@@ -114,18 +111,20 @@ onLoop(({ elapsed }) => {
   if (nodePositions) {
     nodes.forEach((node, i) => {
       const time = elapsed * 0.5
+      // Add scroll-based depth and movement
+      const scrollZ = props.scrollProgress * 15
       const noiseX = Math.sin(time + node.baseY * 0.5) * 0.5
       const noiseY = Math.cos(time + node.baseX * 0.5) * 0.5
-      
+
       const dx = mouseX.value * 5 - node.baseX
       const dy = mouseY.value * 5 - node.baseY
       const dist = Math.sqrt(dx * dx + dy * dy)
       const force = Math.max(0, (4 - dist) / 4)
-      
+
       node.x = node.baseX + noiseX + dx * force * 0.5
       node.y = node.baseY + noiseY + dy * force * 0.5
-      node.z = node.baseZ + Math.sin(time + i) * 0.8
-      
+      node.z = node.baseZ + Math.sin(time + i) * 0.8 + scrollZ
+
       nodePositions[i * 3] = node.x
       nodePositions[i * 3 + 1] = node.y
       nodePositions[i * 3 + 2] = node.z
@@ -139,7 +138,7 @@ onLoop(({ elapsed }) => {
     for (let i = 0; i < NODE_COUNT; i++) {
       const row = Math.floor(i / GRID_SIZE)
       const col = i % GRID_SIZE
-      
+
       if (col < GRID_SIZE - 1) {
         const next = i + 1
         linePositions.push(nodes[i].x, nodes[i].y, nodes[i].z)
@@ -161,10 +160,11 @@ onLoop(({ elapsed }) => {
 
   // Animate Stardust
   if (particlesRef.value) {
-    particlesRef.value.rotation.y = elapsed * 0.02
+    particlesRef.value.rotation.y = elapsed * 0.02 + props.scrollProgress * 2
     particlesRef.value.rotation.z = elapsed * 0.01
     particlesRef.value.position.x = mouseX.value * 0.5
     particlesRef.value.position.y = mouseY.value * 0.5
+    particlesRef.value.position.z = props.scrollProgress * 10
   }
 })
 </script>
