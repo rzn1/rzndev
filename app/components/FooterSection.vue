@@ -6,7 +6,7 @@
           <a href="#home" class="text-2xl font-black tracking-tighter mb-4 text-white uppercase">RZN<span
               class="text-accent-primary">.</span>DEV</a>
           <p class="text-white/20 text-[10px] font-bold uppercase tracking-[0.4em]">© {{ currentYear }} •
-            SYST€M.ARCHIT€CT</p>
+            All rights reserved.</p>
         </div>
 
         <div class="flex gap-12 flex-wrap justify-center">

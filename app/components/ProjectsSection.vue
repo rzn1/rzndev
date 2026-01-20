@@ -24,7 +24,7 @@
 
           <!-- Image -->
           <img :src="project.image" :alt="project.title"
-            class="absolute inset-0 w-full h-full object-cover scale-110 group-hover:scale-100 transition-transform duration-1000">
+            class="absolute inset-0 object-cover w-full h-full scale-110 group-hover:scale-100 transition-transform duration-1000">
 
           <!-- Content Overlay -->
           <div class="relative z-20 mt-auto p-12 bg-gradient-to-t from-bg-primary via-bg-primary/80 to-transparent">
@@ -59,10 +59,10 @@
       </div>
 
       <!-- End Slide -->
-      <div class="flex-shrink-0 w-[40vw] flex flex-col justify-center pl-20 slide">
+      <div class="flex-shrink-0 w-max flex flex-col justify-center pl-24 pr-[20vw] slide">
         <h5 class="text-2xl font-black text-white/20 uppercase tracking-[0.4em] mb-4">The End</h5>
         <a href="#contact"
-          class="text-5xl md:text-6xl font-black text-white hover:text-accent-primary transition-colors underline decoration-accent-primary underline-offset-8">Start
+          class="text-5xl md:text-8xl font-black text-white hover:text-accent-primary transition-colors underline decoration-accent-primary underline-offset-8 whitespace-nowrap">Start
           the next mission.</a>
       </div>
     </div>
@@ -80,16 +80,15 @@ const wrapperRef = ref<HTMLElement | null>(null)
 onMounted(() => {
   if (!wrapperRef.value || !triggerRef.value) return
 
-  const slides = wrapperRef.value.querySelectorAll('.slide')
-  const totalWidth = Array.from(slides).reduce((acc, slide) => acc + (slide as HTMLElement).offsetWidth, 0)
+  const scrollWidth = wrapperRef.value.scrollWidth
 
   gsap.to(wrapperRef.value, {
-    x: () => -(totalWidth - window.innerWidth),
+    x: () => -(scrollWidth - window.innerWidth),
     ease: 'none',
     scrollTrigger: {
       trigger: triggerRef.value,
       start: 'top top',
-      end: () => `+=${totalWidth}`,
+      end: () => `+=${scrollWidth}`,
       scrub: 1,
       pin: true,
       anticipatePin: 1,
@@ -102,7 +101,7 @@ const projects = [
   {
     title: 'AudioV',
     description: 'Bespoke high-fidelity architectural visualization for professional audio creators.',
-    tags: ['WebGL', 'Creative', 'Architecture'],
+    tags: ['WebGL', 'Creative', 'Architecture', 'Three.js'],
     image: '/projects/audiov.png',
     demo: 'https://audiomix-ecru.vercel.app/',
   },
@@ -114,11 +113,11 @@ const projects = [
     demo: 'https://futurerp-website.vercel.app/',
   },
   {
-    title: 'Anmaran',
-    description: 'Convergent enterprise solution for industrial scale infrastructure management.',
-    tags: ['Enterprise', 'Scale', 'UX'],
-    image: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&q=80&w=1000',
-    demo: 'https://www.anmaran.lt',
+    title: 'VYSN',
+    description: 'Anchor your digital presence to the physical world. Capturing high-fidelity augmented experiences in a cinematic, glassmorphic interface.',
+    tags: ['React Native', 'AR', 'Supabase', 'Design'],
+    image: '/projects/vysn.png',
+    demo: null,
   },
 ]
 </script>

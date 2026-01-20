@@ -1,6 +1,6 @@
 <template>
   <nav class="fixed top-0 left-0 w-full z-[1100] py-8 transition-all duration-500"
-    :class="{ 'bg-bg-primary/80 backdrop-blur-2xl py-6 border-b border-white/5': isScrolled }">
+    :class="{ 'bg-bg-primary/80 backdrop-blur-2xl py-6': isScrolled }">
     <div class="container mx-auto px-6 flex justify-between items-center">
       <a href="#home" data-magnetic
         class="logo text-2xl font-black tracking-tighter group transition-colors duration-300 text-white">
